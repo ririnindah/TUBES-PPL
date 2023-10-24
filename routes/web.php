@@ -15,11 +15,13 @@ use App\Http\Controllers\MhsController;
 */
 
 Route::get('/', function () {
-    return view('login1');
+    return view('login');
 });
 
 /*opt*/ 
-Route::get('/dashboard_opt',[OptController::class, 'index'])-> name('dashboard_opt');
+Route::get('/dashboard_opt',function(){
+    return view('dashboard_opt');
+})-> name('dashboard_opt');
 Route::get('/generate',[OptController::class, 'generate'])-> name('generate');
 
 /*mhs*/

@@ -10,6 +10,7 @@
     <title>SIMONE</title>
     <link rel="shortcut icon"  href='https://i.ibb.co/yBG6mSK/Simone-4.png'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('style/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('style/css/bootstrap.css')}}" rel="stylesheet">
