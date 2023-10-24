@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OptController;
 use App\Http\Controllers\MhsController;
+use App\Http\Controllers\OptController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,14 +15,13 @@ use App\Http\Controllers\MhsController;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/',[LoginController::class, 'index']);;
 
-/*opt*/ 
+/*opt*/
 Route::get('/dashboard_opt',function(){
     return view('dashboard_opt');
 })-> name('dashboard_opt');
+
 Route::get('/generate',[OptController::class, 'generate'])-> name('generate');
 
 /*mhs*/
