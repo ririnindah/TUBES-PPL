@@ -30,7 +30,7 @@
                     <div class="div">
                         <h5>Username</h5>
                         <label for="username">Username</label>
-                        <input type="username" id="username" name="username" class="input @error('username') is-invalid @enderror" autofocus required>
+                        <input type="username" id="username" name="username" class="input @error('username') is-invalid @enderror" autofocus required value="{{ old('username') }}">
                         @error('username')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -51,7 +51,7 @@
             	   </div>
             	</div>
             	<a href="#">Lupa Password?</a>
-            	<input type="submit" class="btn" value="Login">
+            	<input type="submit" class="btn btn-secondary" value="Login">
             </form>
         </div>
     </div>

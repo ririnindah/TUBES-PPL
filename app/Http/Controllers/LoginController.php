@@ -14,10 +14,19 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'username' => 'required',
             'password' => 'required'
         ]);
+
+        if(Auth::attempt($credentials)){
+            $request->session()->regenerate();
+            if(Auth::user()->role == 'operator'){
+                return redirect()->intended('/dashboard_opt');
+            }else{
+                return redirect()->intended('/dashboard_mhs');
+            }
+        }
 
     }
 }
