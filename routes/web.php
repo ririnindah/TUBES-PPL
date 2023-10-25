@@ -20,12 +20,11 @@ use App\Http\Controllers\MahasiswaController;
 Route::get('/',[LoginController::class, 'index']);
 Route::post('/',[LoginController::class, 'authenticate']);
 
-//opt
+// opt
 Route::middleware(['isOperator'])->group(function(){
     Route::get('/dashboard_opt',[OperatorController::class, 'index'])-> name('dashboard_opt');
     Route::get('/generate',[OperatorController::class, 'generate'])-> name('generate');
 });
-
 
 /*mhs*/
 Route::middleware(['isMahasiswa'])->group(function(){
@@ -33,8 +32,3 @@ Route::middleware(['isMahasiswa'])->group(function(){
     Route::get('/update_mhs',[MahasiswaController::class, 'update_mhs'])-> name('update_mhs');
     Route::get('/irs',[MahasiswaController::class, 'irs'])-> name('irs');
 });
-
-
-// Route::get('/dashboard_mhs',[MahasiswaController::class, 'index'])-> name('dashboard_mhs');
-// Route::get('/update_mhs',[MahasiswaController::class, 'update_mhs'])-> name('update_mhs');
-// Route::get('/irs',[MahasiswaController::class, 'irs'])-> name('irs');
