@@ -16,22 +16,30 @@
 		</div>
 		<div class="login-content">
 
+        @if (session()->has('loginError'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{session('loginError')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+        @endif
+
             {{-- form --}}
 			<form action= "/" method="post">
                 @csrf
 				<img src="https://i.ibb.co/yBG6mSK/Simone-4.png">
 				<h2 class="title">Welcome</h2>
 
-                {{-- username --}}
+                {{-- email --}}
            	    <div class="input-div one">
                     <div class="i">
                             <i class="fas fa-user"></i>
                     </div>
                     <div class="div">
-                        <h5>Username</h5>
-                        <label for="username">Username</label>
-                        <input type="username" id="username" name="username" class="input @error('username') is-invalid @enderror" autofocus required value="{{ old('username') }}">
-                        @error('username')
+                        <h5>email</h5>
+                        {{-- <label for="email">email</label> --}}
+                        <input type="email" id="email" name="email" class="input @error('email') is-invalid @enderror" autofocus required value="{{ old('email') }}">
+                        @error('email')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>

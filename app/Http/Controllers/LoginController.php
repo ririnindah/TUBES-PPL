@@ -15,18 +15,35 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'username' => 'required',
+            'email' => 'required|email:dns',
             'password' => 'required'
         ]);
 
+
+
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            if(Auth::user()->role == 'operator'){
+            // $role = Auth::user()->role;
+
+            if(Auth::User()->role == 'operator'){
                 return redirect()->intended('/dashboard_opt');
-            }else{
+            }else if(Auth::User()->role == 'mahasiswa'){
                 return redirect()->intended('/dashboard_mhs');
             }
+
+
+            // }else if(Auth::user()->role == 'dosenwali'){
+            //     return redirect()->intended('/dashboard_dsn');
+            // }else if(Auth::user()->role == 'departemen'){
+            //     return redirect()->intended('/dashboard_dpt');
+            //
+            // }
+
+
+            // return back()->with('loginError', 'Login Failed');
         }
+
+        // dd($credentials);
 
     }
 }

@@ -16,7 +16,7 @@ class isDepartemen
     public function handle(Request $request, Closure $next): Response
     {
 
-        if(!auth()->check() || auth()->User()->dpt_id !== null){
+        if(!auth()->check() || auth()->User()->role != 'departemen'){
             abort(403);
         }
         return $next($request);

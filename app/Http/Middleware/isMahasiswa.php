@@ -17,7 +17,7 @@ class isMahasiswa
 
     {
 
-        if(!auth()->check() || auth()->User()->mhs_id !== null){
+        if(!auth()->check() || auth()->User()->role != 'mahasiswa'){
             abort(403);
         }
 

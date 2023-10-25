@@ -15,7 +15,7 @@ class isOperator
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->check() || auth()->User()->opt_id !== null){
+        if(!auth()->check() || auth()->User()->role != 'operator'){
             abort(403);
         }
         return $next($request);

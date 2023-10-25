@@ -15,7 +15,7 @@ class isDosenWali
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->check() || auth()->User()->dsn_id !== null){
+        if(!auth()->check() || auth()->User()->role != 'dosenwali'){
             abort(403);
         }
         return $next($request);
