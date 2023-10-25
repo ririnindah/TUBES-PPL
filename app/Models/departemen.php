@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class departemen extends Model
 {
+    protected $guarded = ['id'];
+    protected $table = 'departemen';
     use HasFactory;
 }

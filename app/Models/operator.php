@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class operator extends Model
 {
+    protected $guarded = ['id'];
+    protected $table = 'operator';
     use HasFactory;
 }

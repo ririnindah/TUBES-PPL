@@ -17,7 +17,8 @@ class DepartemenFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nip'=>$this->faker->numberBetween(1,9999),
+            'nama'=>$this->faker->name
         ];
     }
 }
