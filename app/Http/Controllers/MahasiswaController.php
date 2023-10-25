@@ -13,7 +13,15 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard_mhs');
+    }
+    public function update_mhs()
+    {
+        return view('update_mhs');
+    }
+    public function irs()
+    {
+        return view('irs');
     }
 
     /**

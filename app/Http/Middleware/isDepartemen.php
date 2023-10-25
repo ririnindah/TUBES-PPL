@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class isMahasiswa
+class isDepartemen
 {
     /**
      * Handle an incoming request.
@@ -14,13 +14,11 @@ class isMahasiswa
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-
     {
 
-        if(!auth()->check() || auth()->User()->mhs_id !== null){
+        if(!auth()->check() || auth()->User()->dpt_id !== null){
             abort(403);
         }
-
         return $next($request);
     }
 }

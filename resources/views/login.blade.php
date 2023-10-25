@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet"  type="text/css" >
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<link rel="shortcut icon"  href='https://i.ibb.co/yBG6mSK/Simone-4.png'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <link href="{{asset('style/css/login.css')}}" rel="stylesheet">
 
@@ -14,25 +15,39 @@
 			<img src="https://i.ibb.co/yBG6mSK/Simone-4.png">
 		</div>
 		<div class="login-content">
-			<form action= "/dashboard_opt" method="GET">
+
+            {{-- form --}}
+			<form action= "/" method="post">
+                @csrf
 				<img src="https://i.ibb.co/yBG6mSK/Simone-4.png">
 				<h2 class="title">Welcome</h2>
-           		<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
-           		   </div>
-           		   <div class="div">
-           		   		<h5>Username</h5>
-           		   		<input type="text" class="input">
-           		   </div>
+
+                {{-- username --}}
+           	    <div class="input-div one">
+                    <div class="i">
+                            <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Username</h5>
+                        <label for="username">Username</label>
+                        <input type="username" id="username" name="username" class="input @error('username') is-invalid @enderror" autofocus required>
+                        @error('username')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror
+                    </div>
            		</div>
+
+                {{-- email --}}
            		<div class="input-div pass">
-           		   <div class="i"> 
+           		   <div class="i">
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
            		    	<h5>Password</h5>
-           		    	<input type="password" class="input">
+                        {{-- <label for="password">Password</label> --}}
+           		    	<input type="password" id="password" name="password" class="input" required>
             	   </div>
             	</div>
             	<a href="#">Lupa Password?</a>
@@ -63,7 +78,7 @@ inputs.forEach(input => {
   input.addEventListener("blur", remcl);
 });
 </script>
- 
+
 
 </body>
 

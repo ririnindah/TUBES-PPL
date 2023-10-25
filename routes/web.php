@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MhsController;
-use App\Http\Controllers\OptController;
 use App\Http\Controllers\LoginController;
+use PHPUnit\Framework\Constraint\Operator;
+use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\MahasiswaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,18 +17,19 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/',[LoginController::class, 'index']);;
+Route::get('/',[LoginController::class, 'index'])->middleware('guest');
+Route::post('/',[LoginController::class, 'authenticate']);
 
-/*opt*/
-Route::get('/dashboard_opt',function(){
-    return view('dashboard_opt');
-})-> name('dashboard_opt');
+//opt
+Route::get('/dashboard_opt',[OperatorController::class, 'index'])-> name('dashboard_opt');
+Route::get('/generate',[OperatorController::class, 'generate'])-> name('generate');
 
-Route::get('/generate',[OptController::class, 'generate'])-> name('generate');
 
 /*mhs*/
-Route::get('/dashboard_mhs',[MhsController::class, 'index'])-> name('dashboard_mhs');
-Route::get('/update_mhs',[MhsController::class, 'update_mhs'])-> name('update_mhs');
+Route::middleware(['isMahasiswa'])->group(function(){
+    Route::get('/dashboard_mhs',[MahasiswaController::class, 'index'])-> name('dashboard_mhs');
+    Route::get('/update_mhs',[MahasiswaController::class, 'update_mhs'])-> name('update_mhs');
+    Route::get('/irs',[MahasiswaController::class, 'irs'])-> name('irs');
+});
 
-Route::get('/irs',[MhsController::class, 'irs'])-> name('irs');
 
