@@ -16,6 +16,7 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
+<<<<<<< HEAD
         // $credentials = $request->validate([
         //     'email' => 'required',
         //     'password' => 'required'
@@ -47,16 +48,42 @@ class LoginController extends Controller
         //     return back()->with('loginError', 'Login Failed');
         // }
 
+=======
+        
+>>>>>>> 3405c9a9c7190a86123f837a3dab2e28c4d6806f
         $credentials = $request->validate([
             'email' => 'required',
             'password' => 'required'
         ]);
+<<<<<<< HEAD
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect()->intended('/dashboard_opt');
         } else {
             Log::error('Auth attempt failed for user: ' . $credentials['email']);
+=======
+        dd(Auth::attempt($credentials));
+        if(Auth::attempt($credentials)){
+            $request->session()->regenerate();
+
+            if(Auth::User()->role == 'operator'){
+                return redirect()->intended('/dashboard_opt');
+            }else if(Auth::User()->role == 'mahasiswa'){
+                return redirect()->intended('/dashboard_mhs');
+            }
+
+
+            // }else if(Auth::user()->role == 'dosenwali'){
+            //     return redirect()->intended('/dashboard_dsn');
+            // }else if(Auth::user()->role == 'departemen'){
+            //     return redirect()->intended('/dashboard_dpt');
+            //
+            // }
+
+
+        }else{
+>>>>>>> 3405c9a9c7190a86123f837a3dab2e28c4d6806f
             return back()->with('loginError', 'Login Failed');
         }
 

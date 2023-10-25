@@ -18,6 +18,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role');
+            // $table->foreignId('mhs_id')->nullable();
+            // $table->foreignId('opt_id')->nullable();
+            // $table->foreignId('dsn_id')->nullable();
+            // $table->foreignId('dpt_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
